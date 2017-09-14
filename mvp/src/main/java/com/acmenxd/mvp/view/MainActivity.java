@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         datas = new ArrayList<>();
-        datas.add(new DataInfo("成语接龙专用", "", TestActivity.class));
+        datas.add(new DataInfo("成语接龙", "", TestActivity.class));
     }
 
     private class DataInfo {
