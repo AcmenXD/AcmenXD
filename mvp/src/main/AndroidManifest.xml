@@ -29,7 +29,7 @@
             android:launchMode="singleTask"
             android:theme="@style/MainTheme"/>
         <activity
-            android:name=".view.test.TestActivity"/>
+            android:name=".view.test.IdiomActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

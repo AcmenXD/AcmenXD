@@ -15,7 +15,7 @@ import com.acmenxd.mvp.base.BaseActivity;
 import com.acmenxd.mvp.base.EventBusHelper;
 import com.acmenxd.mvp.model.response.TestEntity;
 import com.acmenxd.mvp.utils.ViewUtils;
-import com.acmenxd.mvp.view.test.TestActivity;
+import com.acmenxd.mvp.view.test.IdiomActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         datas = new ArrayList<>();
-        datas.add(new DataInfo("成语接龙", "", TestActivity.class));
+        datas.add(new DataInfo("成语接龙", "", IdiomActivity.class));
     }
 
     private class DataInfo {

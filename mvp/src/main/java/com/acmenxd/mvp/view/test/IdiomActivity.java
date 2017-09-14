@@ -38,10 +38,10 @@ import retrofit2.http.Url;
  * @version v1.0
  * @github https://github.com/AcmenXD
  * @date 2017/9/13 18:02
- * @detail something
+ * @detail 成语接龙
  */
-public class TestActivity extends BaseActivity {
-    public static class TestBean implements Serializable {
+public class IdiomActivity extends BaseActivity {
+    public static class IdiomBean implements Serializable {
 
         /**
          * status : 0
@@ -60,10 +60,10 @@ public class TestActivity extends BaseActivity {
         }
     }
 
-    public interface Test {
+    public interface IdiomRequest {
         @FormUrlEncoded
         @POST()
-        Call<TestBean> post(@Url String url, @Field("appkey") String appkey, @Field("keyword") String keyword);
+        Call<IdiomBean> post(@Url String url, @Field("appkey") String appkey, @Field("keyword") String keyword);
     }
 
     private RecyclerView rv;
@@ -77,7 +77,7 @@ public class TestActivity extends BaseActivity {
     @Override
     protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_idiom);
         rv = getView(R.id.activity_test_rv);
         //设置布局管理器
         LinearLayoutManager manager1 = new LinearLayoutManager(this);
@@ -92,7 +92,7 @@ public class TestActivity extends BaseActivity {
             }
         });
         // 设置Adapter
-        mAdapter = new SimpleAdapter<String>(this, rv, R.layout.activity_test_item, datas) {
+        mAdapter = new SimpleAdapter<String>(this, rv, R.layout.activity_idiom_item, datas) {
             @Override
             public void convert(ViewHolder viewHolder, String item, int dataPosition) {
                 TextView tv = viewHolder.getView(R.id.activity_test_item_tv);
@@ -143,9 +143,9 @@ public class TestActivity extends BaseActivity {
         Logger.e(str);
         if (!Utils.isEmpty(str)) {
             final String tempStr = String.valueOf(str.charAt(str.length() - 1));
-            request(TestActivity.Test.class).post(url, appkey, tempStr).enqueue(new BindCallback<TestBean>() {
+            request(IdiomRequest.class).post(url, appkey, tempStr).enqueue(new BindCallback<IdiomBean>() {
                 @Override
-                public void succeed(@NonNull TestBean pData) {
+                public void succeed(@NonNull IdiomBean pData) {
                     if (pData != null && pData.result != null && pData.result.size() > 0) {
                         for (int i = 0; i < pData.result.size(); i++) {
                             if (pData.result.get(i).name.startsWith(tempStr)) {
