@@ -1,0 +1,41 @@
+/**
+ * build.gradle Module统一配置
+ */
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "27.0.3"
+    minSdkVersion = 14
+    targetSdkVersion = 26
+
+    // 基础框架库
+    frame = "com.github.AcmenXD:AndroidFrame:1.1"
+    // 图片加载库
+    glide = "com.github.AcmenXD:Glide:3.0"
+    // 图片加载库
+    frescoview = "com.github.AcmenXD:FrescoView:3.0"
+
+    // 测试库
+    test = [
+            junit   : "junit:junit:4.12",
+            espresso: "com.android.support.test.espresso:espresso-core:2.2.2",
+    ]
+
+    // 系统库
+    system = [
+            appcompatV7 : "com.android.support:appcompat-v7:26.1.0",
+    ]
+
+    // 数据库
+    db = [
+            greendao : "org.greenrobot:greendao:3.2.2",
+            // 数据库加密库
+            sqlcipher: "net.zetetic:android-database-sqlcipher:3.5.1",
+            // 查看数据库表的工具库
+            debug    : "com.amitshekhar.android:debug-db:1.0.0",
+    ]
+
+    eventbus = [
+            eventbus                    : "org.greenrobot:eventbus:3.0.0",
+            eventbus_annotationProcessor: "org.greenrobot:eventbus-annotation-processor:3.0.1",
+    ]
+}

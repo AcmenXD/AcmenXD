@@ -11,11 +11,21 @@ import android.widget.TextView;
 
 import com.acmenxd.logger.Logger;
 import com.acmenxd.mvp.R;
-import com.acmenxd.mvp.base.BaseActivity;
-import com.acmenxd.mvp.base.EventBusHelper;
-import com.acmenxd.mvp.model.response.TestEntity;
-import com.acmenxd.mvp.utils.ViewUtils;
-import com.acmenxd.mvp.view.test.IdiomActivity;
+import com.acmenxd.core.base.AppConfig;
+import com.acmenxd.core.base.BaseActivity;
+import com.acmenxd.core.base.EventBusHelper;
+import com.acmenxd.core.model.response.TestEntity;
+import com.acmenxd.core.utils.RefreshUtils;
+import com.acmenxd.mvp.view.demo.DBActivity;
+import com.acmenxd.mvp.view.demo.FileActivity;
+import com.acmenxd.mvp.view.demo.FrescoActivity;
+import com.acmenxd.mvp.view.demo.GlideActivity;
+import com.acmenxd.mvp.view.demo.LogActivity;
+import com.acmenxd.mvp.view.demo.RecyclerActivity;
+import com.acmenxd.mvp.view.demo.RetrofitActivity;
+import com.acmenxd.mvp.view.demo.SPActivity;
+import com.acmenxd.mvp.view.demo.ToastActivity;
+import com.acmenxd.toaster.Toaster;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -39,7 +49,7 @@ public class MainActivity extends BaseActivity {
         Logger.w("App进入MainActivity!");
         setContentView(R.layout.activity_main);
         setTitleView(R.layout.layout_title);
-        ViewUtils.initTitleView(getTitleView(), getBundle().getString("title", "个人程序列表"), null);
+        RefreshUtils.initTitleView(getTitleView(), "Android框架设计", null);
         initData();
 
         lv_main = (ListView) findViewById(R.id.lv_main);
@@ -63,12 +73,70 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void showTestEntity(TestEntity pTestEntity) {
-        //Toaster.show("Debug:" + AppConfig.DEBUG);
+        Toaster.show("Debug:" + AppConfig.DEBUG);
     }
 
     private void initData() {
         datas = new ArrayList<>();
-        datas.add(new DataInfo("成语接龙", "", IdiomActivity.class));
+        datas.add(new DataInfo("FileUtils 相关操作", "1.统一管理程序所需目录!", FileActivity.class));
+        datas.add(new DataInfo("Logger日志",
+                "1.完美兼容Android系统Log日志 \n" +
+                        "2.拓展Log日志,参数支持任意类型&Object \n" +
+                        "3.支持 开关&等级 控制 \n" +
+                        "4.支持 json&xml 自动格式化日志输出 \n" +
+                        "5.支持输出日志到指定文件 \n" +
+                        "6.支持所有Throwable错误格式化输出 \n" +
+                        "7.支持日志追溯功能,一键到日志输出的代码行!"
+                , LogActivity.class));
+        datas.add(new DataInfo("Toast 相关操作",
+                "1.由系统Toast拓展而来 \n" +
+                        "2.支持 debug模式Toast 开关 \n" +
+                        "3.支持 '无等待' 模式,随用随弹 \n" +
+                        "4.支持自定义时长 \n" +
+                        "5.支持Object可变参数,无需在转换Strng的繁琐 \n" +
+                        "6.支持R.String的id类型,也是可变参,超方便 \n" +
+                        "7.支持View类型~自定义就是这么简单 \n" +
+                        "8.支持位置可变,上中下左右~支持偏移量,想放哪里放哪里!", ToastActivity.class));
+        datas.add(new DataInfo("SharedPreferences 相关操作",
+                "1.由系统SharedPreferences扩展 \n" +
+                        "2.所有Key-Value默认采用Base64+MD5加解密 \n" +
+                        "3.加密方式一行代码替换 \n" +
+                        "4.支持数据变更的事件监听!", SPActivity.class));
+        datas.add(new DataInfo("Retrofit 相关操作",
+                "1.支持基本Get,Post,Put,Options以及Bitmap上传下载请求 \n" +
+                        "2.支持网络缓存及Cookie自动管理 \n" +
+                        "3.支持格式化Log输出(很详细的日志哦~) \n" +
+                        "4.支持公共Header,param,body的设置 \n" +
+                        "5.支持RxJava \n" +
+                        "6.支持统一错误处理!", RetrofitActivity.class));
+        datas.add(new DataInfo("Image -> Glide 相关操作",
+                "1.使用方式同glide一样 \n" +
+                        "2.提供glide初始的一些函数调用 \n" +
+                        "3.提供圆角|圆形支持!", GlideActivity.class));
+        datas.add(new DataInfo("Image -> fresco 相关操作",
+                "1.支持PNG / GIF / WebP / JPEG格式,支持加载网络/res资源/本地资源 \n" +
+                        "2.支持 低分辨率&高分辨率加载 > 缩略图式加载 > 渐进式加载 \n" +
+                        "3.支持监听加载进度,加载成功和失败回调 \n" +
+                        "4.支持多层构图,占位图-背景图-覆盖图-加载失败图-失败重试图-进度条图 \n" +
+                        "5.支持加载失败,点击再次加载 \n" +
+                        "6.支持加载过程中显示加载动画 \n" +
+                        "7.支持圆角|原型|边框,并设置颜色 \n" +
+                        "8.支持图片渐显动画 \n" +
+                        "9.支持gif动画的随时播放暂停!", FrescoActivity.class));
+        datas.add(new DataInfo("RecyclerView相关操作",
+                "1.支持下拉上拉刷新加载\n" +
+                        "2.支持Header/Footer/Empty布局的添加\n" +
+                        "3.支持N种item类型\n" +
+                        "4.无需再实现Adapter/ViewHolder类,直接new CommonAdapter或MultiItemTypeAdapter重写回调方法即可\n" +
+                        "5.LoadMore & Empty 支持点击回调\n" +
+                        "6.支持自定义分隔线 & item动画\n" +
+                        "7.未更改任何RecyclerView实现,无缝支持RecyclerView所有功能\n" +
+                        "8.链式Adapter调用~ 易读,易懂!\n" +
+                        "9.支持item单击&长按&滑动删除&拖拽换位&侧滑菜单功能!", RecyclerActivity.class));
+        datas.add(new DataInfo("GreenDao3.x相关操作",
+                "1.实体类一键创建数据库表\n" +
+                        "2.实体Dao自动生成管理,提供诸多操作数据库函数\n" +
+                        "3.数据库版本号一键修改,升级支持增减表字段!", DBActivity.class));
     }
 
     private class DataInfo {

@@ -1,1 +1,1 @@
-include ':frame', ':mvp'
+include ':core', ':mvp'

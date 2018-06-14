@@ -8,12 +8,12 @@ import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 
 import com.acmenxd.frame.utils.PermissionsUtils;
-import com.acmenxd.frame.utils.Utils;
+import com.acmenxd.frame.utils.StringUtils;
 import com.acmenxd.logger.Logger;
 import com.acmenxd.mvp.R;
-import com.acmenxd.mvp.base.AppConfig;
-import com.acmenxd.mvp.base.BaseActivity;
-import com.acmenxd.mvp.base.BaseApplication;
+import com.acmenxd.core.base.AppConfig;
+import com.acmenxd.core.base.BaseActivity;
+import com.acmenxd.core.base.BaseApplication;
 import com.acmenxd.sptool.SpManager;
 import com.acmenxd.sptool.SpTool;
 
@@ -42,7 +42,6 @@ public final class SplashActivity extends BaseActivity {
     @Override
     protected void onCreateBefore(@NonNull Bundle savedInstanceState) {
         super.onCreateBefore(savedInstanceState);
-        isFillStatusBarBg = false;
     }
 
     @Override
@@ -133,8 +132,6 @@ public final class SplashActivity extends BaseActivity {
                 permissionsIndex++;
                 if (permissionsIndex == permissions.length) {
                     AppConfig.permissionsAfterInit();
-                    // 获取应用整体数据
-                    // startService(MainService.class);
                     if (permissionsOrStartResult) {
                         startNextActivity();
                     } else {
@@ -150,7 +147,7 @@ public final class SplashActivity extends BaseActivity {
      */
     private void startNextActivity() {
         if (!nextStarting) {
-            if (!Utils.isEmpty(coopenClickUrl)) {
+            if (!StringUtils.isEmpty(coopenClickUrl)) {
                 /*nextStarting = true;
                 Bundle bundle = new Bundle();
                 bundle.putString(UrlConstans.WEB_URL, coopenClickUrl);
