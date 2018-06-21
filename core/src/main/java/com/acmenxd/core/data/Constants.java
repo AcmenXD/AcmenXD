@@ -1,4 +1,4 @@
-package com.acmenxd.mvp.data;
+package com.acmenxd.core.data;
 
 /**
  * @author AcmenXD
