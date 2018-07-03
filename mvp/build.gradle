@@ -97,5 +97,5 @@ dependencies {
     /**
      * Module
      */
-    compile project(':core')
+    implementation project(':core')
 }
