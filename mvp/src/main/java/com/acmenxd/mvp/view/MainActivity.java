@@ -13,7 +13,7 @@ import com.acmenxd.logger.Logger;
 import com.acmenxd.mvp.R;
 import com.acmenxd.core.base.AppConfig;
 import com.acmenxd.core.base.BaseActivity;
-import com.acmenxd.core.base.EventBusHelper;
+import com.acmenxd.core.utils.EventBusHelper;
 import com.acmenxd.core.model.response.TestEntity;
 import com.acmenxd.core.utils.RefreshUtils;
 import com.acmenxd.mvp.view.demo.DBActivity;
