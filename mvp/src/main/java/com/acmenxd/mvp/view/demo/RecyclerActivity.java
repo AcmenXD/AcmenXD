@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acmenxd.core.base.BaseActivity;
-import com.acmenxd.core.utils.RefreshUtils;
+import com.acmenxd.core.utils.TitleUtils;
 import com.acmenxd.mvp.R;
 import com.acmenxd.recyclerview.LoadMoreLayout;
 import com.acmenxd.recyclerview.adapter.AdapterUtils;
@@ -67,7 +67,7 @@ public class RecyclerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
         setTitleView(R.layout.layout_title);
-        RefreshUtils.initTitleView(getTitleView(), getBundle().getString("title"), new RefreshUtils.OnTitleListener() {
+        TitleUtils.initTitleView(getTitleView(), getBundle().getString("title"), new TitleUtils.OnTitleListener() {
             @Override
             public void onBack() {
                 RecyclerActivity.this.finish();

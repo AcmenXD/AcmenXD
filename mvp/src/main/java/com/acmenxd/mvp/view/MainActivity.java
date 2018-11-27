@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.acmenxd.core.utils.TitleUtils;
 import com.acmenxd.logger.Logger;
 import com.acmenxd.mvp.R;
 import com.acmenxd.core.base.AppConfig;
@@ -49,7 +50,7 @@ public class MainActivity extends BaseActivity {
         Logger.w("App进入MainActivity!");
         setContentView(R.layout.activity_main);
         setTitleView(R.layout.layout_title);
-        RefreshUtils.initTitleView(getTitleView(), "Android框架设计", null);
+        TitleUtils.initTitleView(getTitleView(), "Android框架设计", null);
         initData();
 
         lv_main = (ListView) findViewById(R.id.lv_main);

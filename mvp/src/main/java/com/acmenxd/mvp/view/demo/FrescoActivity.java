@@ -8,13 +8,13 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.acmenxd.core.base.BaseActivity;
+import com.acmenxd.core.utils.TitleUtils;
 import com.acmenxd.frame.utils.StringUtils;
 import com.acmenxd.frescoview.FrescoCallback;
 import com.acmenxd.frescoview.FrescoView;
 import com.acmenxd.logger.Logger;
 import com.acmenxd.mvp.R;
-import com.acmenxd.core.base.BaseActivity;
-import com.acmenxd.core.utils.RefreshUtils;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
@@ -38,7 +38,7 @@ public class FrescoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fresco);
         setTitleView(R.layout.layout_title);
-        RefreshUtils.initTitleView(getTitleView(), getBundle().getString("title"), new RefreshUtils.OnTitleListener() {
+        TitleUtils.initTitleView(getTitleView(), getBundle().getString("title"), new TitleUtils.OnTitleListener() {
             @Override
             public void onBack() {
                 FrescoActivity.this.finish();
@@ -94,11 +94,11 @@ public class FrescoActivity extends BaseActivity {
                 .setRoundingParams(30, Color.BLACK, 0, 0, false)
                 .setFadeDuration(0)
                 .setControllerListener(callback)
-//                .setFirstAvailableImageURIs(
-//                        "http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_7.jpg",
-//                        "http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_6.jpg")
-//                .setAspectRatio(10, 3)
-//                .setPressedStateOverlay(getResources().getDrawable(R.mipmap.ic_launcher))
+                //                .setFirstAvailableImageURIs(
+                //                        "http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_7.jpg",
+                //                        "http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_6.jpg")
+                //                .setAspectRatio(10, 3)
+                //                .setPressedStateOverlay(getResources().getDrawable(R.mipmap.ic_launcher))
                 .commit();
     }
 
@@ -157,8 +157,8 @@ public class FrescoActivity extends BaseActivity {
         };
         iv3.image()
                 .setHighImageURI("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2994123101,43895145&fm=23&gp=0.jpg")
-//                .setLowImageURI("http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_8.jpg")
-//                .setHighImageURI("http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_1.jpg")
+                //                .setLowImageURI("http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_8.jpg")
+                //                .setHighImageURI("http://image52.360doc.com/DownloadImg/2012/06/0316/24581213_1.jpg")
                 .setRoundingParams(100, Color.BLACK, 10, Color.YELLOW, false)
                 .setFadeDuration(1000)
                 .setPostprocessor(customPostprocessor)
